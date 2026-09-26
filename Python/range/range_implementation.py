@@ -1,4 +1,7 @@
+""" Попытка скопировать функционал штатного range """
+
 class range:
+
     def __init__(self, *args):
         l = len(args)
         if l > 3:
@@ -23,16 +26,6 @@ class range:
         self.__stop = stop
         self.__step = step
 
-    def __len__(self):
-        return max(0, (self.stop - self.start) // self.step + bool((self.stop - self.start) % self.step))
-
-    def __getitem__(self, item):
-        if item >= len(self) or item <= -len(self) - 1:
-            raise IndexError('range object index out of range')
-        if item < 0:
-            item = len(self) + item
-        return self.start + self.step * item
-
     def __next__(self):
         self.__index += 1
         if (
@@ -45,6 +38,16 @@ class range:
 
     def __iter__(self):
         return self
+
+    def __len__(self):
+        return max(0, (self.stop - self.start) // self.step + bool((self.stop - self.start) % self.step))
+
+    def __getitem__(self, item):
+        if item >= len(self) or item <= -len(self) - 1:
+            raise IndexError('range object index out of range')
+        if item < 0:
+            item = len(self) + item
+        return self.start + self.step * item
 
     def __repr__(self):
         return f'range({self.__start}, {self.__stop})' if self.__step == 1 else f'range({self.__start}, {self.__stop}, {self.__step})'
