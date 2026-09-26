@@ -50,7 +50,7 @@ class range:
         return self.start + self.step * item
 
     def __repr__(self):
-        return f'range({self.__start}, {self.__stop})' if self.__step == 1 else f'range({self.__start}, {self.__stop}, {self.__step})'
+        return f'range({self.start}, {self.stop})' if self.step == 1 else f'range({self.start}, {self.stop}, {self.step})'
 
     def index(self, value):
         if (
