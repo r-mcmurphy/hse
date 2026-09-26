@@ -1,6 +1,6 @@
 std_range = range
 
-from range_implementation import range
+from .range_implementation import range
 import unittest
 
 
